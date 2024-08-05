@@ -1,0 +1,32 @@
+import kotlinx.datetime.LocalDate;
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE EventsDB (
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT,
+    categoryId TEXT NOT NULL,
+    cost REAL,
+    date TEXT AS LocalDate NOT NULL,
+    createAt TEXT AS LocalDateTime NOT NULL,
+    updateAt TEXT AS LocalDateTime NOT NULL,
+    note TEXT
+);
+
+get:
+SELECT * FROM EventsDB WHERE id = :id LIMIT 1;
+
+getAll:
+SELECT * FROM EventsDB;
+
+getByIds:
+SELECT * FROM EventsDB WHERE id IN :ids;
+
+insert:
+INSERT OR REPLACE INTO EventsDB VALUES ?;
+
+delete:
+DELETE FROM EventsDB WHERE id = :id;
+
+clear:
+DELETE FROM EventsDB;
+
